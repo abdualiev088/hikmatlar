@@ -59,24 +59,23 @@
         app:layout_constraintTop_toTopOf="@+id/image" />
 
     <LinearLayout
-        android:id="@+id/btnStartBack"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
         android:alpha="0.7"
+        android:id="@+id/btnStartBack"
         android:background="@drawable/btn_start"
-        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/btnStart"
-        app:layout_constraintEnd_toEndOf="@+id/buyuk"
-        app:layout_constraintStart_toStartOf="@+id/buyuk" />
+        app:layout_constraintStart_toStartOf="@+id/btnStart"
+        android:orientation="horizontal" />
 
     <LinearLayout
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/btn_start"
         app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="@+id/buyuk"
         app:layout_constraintStart_toStartOf="@+id/buyuk">
 
         <TextView
@@ -85,7 +84,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/inter_semibold"
             android:paddingHorizontal="20dp"
-            android:text="Davom etish"
+            android:text="Boshlash"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18dp" />

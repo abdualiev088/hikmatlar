@@ -1,24 +1,18 @@
 package com.example.hikmatlar.QuoteRv
 
-import android.text.TextUtils
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hikmatlar.Backend.Api.ApiService.Quote
 import com.example.hikmatlar.R
-import java.util.Locale
-
 
 class QuoteAdapter(private var quotes: List<Quote>)
     : RecyclerView.Adapter<QuoteAdapter.ViewHolder>(){
-
-    private val originalList = quotes
-    private val filteredList = ArrayList(originalList)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,7 +21,7 @@ class QuoteAdapter(private var quotes: List<Quote>)
     }
 
     override fun onBindViewHolder(holder: QuoteAdapter.ViewHolder, position: Int) {
-        val quote = filteredList.get(position)
+        val quote = quotes.get(position)
         holder.title.text = quote.text
         holder.quote.text = quote.translation
         holder.author.text = quote.author
@@ -38,7 +32,7 @@ class QuoteAdapter(private var quotes: List<Quote>)
 //        }
     }
 
-    override fun getItemCount() = filteredList.size
+    override fun getItemCount() = quotes.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
@@ -68,24 +62,5 @@ class QuoteAdapter(private var quotes: List<Quote>)
 //            }
 //        }
     }
-
-    fun filter(query: String) {
-        filteredList.clear()
-        if (TextUtils.isEmpty(query)) {
-            filteredList.addAll(originalList)
-        } else {
-            for (quote in originalList) {
-                if (quote.translation.lowercase()
-                        .contains(query.lowercase())
-                    || quote.author.lowercase()
-                        .contains(query.lowercase())
-                ) {
-                    filteredList.add(quote)
-                }
-            }
-        }
-        notifyDataSetChanged()
-    }
-
 
 }
